@@ -18,4 +18,3 @@ plt.figure(figsize=(15, 10))
 plot_tree(tree_reg, filled=True, feature_names=iris_data.feature_names,
 class_names=iris_data.target_names)
 plt.show()
-3
