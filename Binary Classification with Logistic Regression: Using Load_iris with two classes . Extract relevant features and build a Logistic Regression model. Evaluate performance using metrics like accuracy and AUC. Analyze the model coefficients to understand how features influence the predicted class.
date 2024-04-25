@@ -1,0 +1,21 @@
+earn.tree import DecisionTreeRegressor, plot_tree
+import matplotlib.pyplot as plt
+# Load the Iris dataset
+iris_data = load_irfrom sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklis()
+X = iris_data.data # Features
+y = iris_data.target # Target variable
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,
+random_state=42)
+# Initialize the decision tree regressor
+tree_reg = DecisionTreeRegressor(random_state=42)
+# Fit the model to the training data
+tree_reg.fit(X_train, y_train)
+# Visualize the decision tree
+plt.figure(figsize=(15, 10))
+plot_tree(tree_reg, filled=True, feature_names=iris_data.feature_names,
+class_names=iris_data.target_names)
+plt.show()
+3
