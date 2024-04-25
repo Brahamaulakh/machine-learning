@@ -1,0 +1,32 @@
+import numpy as np
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+import matplotlib.pyplot as plt
+# Load Iris dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+# Use sepal length (cm) as the target variable
+X = X[:, :3] # We'll only use the first three features for simplicity
+y = X[:, 0] # Sepal length is the first column
+# Split Data
+X_train, _, y_train, _ = train_test_split(X, y, test_size=0.2, random_state=42)
+# Model Training
+model = LinearRegression()
+model.fit(X_train, y_train)
+# Model Evaluation - R-squared error for training data
+y_train_pred = model.predict(X_train)
+train_r2 = r2_score(y_train, y_train_pred)
+print("Train R-squared:", train_r2)
+# Visualizing results for training data
+plt.figure(figsize=(8, 6))
+plt.scatter(y_train, y_train_pred, color='blue')
+plt.plot([min(y_train), max(y_train)], [min(y_train), max(y_train)], 'k--', lw=3)
+plt.xlabel('Actual Sepal Length')
+plt.ylabel('Predicted Sepal Length')
+plt.title('Actual vs. Predicted Sepal Length (Training Data)')
+plt.grid(True)
+plt.show()
+Train R-
